@@ -4,9 +4,9 @@ public class Student {
     private int student_contact;
     private String student_email;
     private String student_address;
-    private Transaction noofbooks[]=new Transaction[3];
+    private Transaction noofbooks;
 
-    public Student(int student_id, String student_name, int student_contact, String student_email, String student_address, Transaction[] noofbooks) {
+    public Student(int student_id, String student_name, int student_contact, String student_email, String student_address, Transaction noofbooks) {
         this.student_id = student_id;
         this.student_name = student_name;
         this.student_contact = student_contact;
@@ -35,7 +35,7 @@ public class Student {
         return student_address;
     }
 
-    public Transaction[] getNoofbooks() {
+    public Transaction getNoofbooks() {
         return noofbooks;
     }
 }

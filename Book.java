@@ -4,9 +4,9 @@ public class Book {
     private String book_author;
     private String book_publication;
     private String book_isbn;
-    private boolean book_taken;
+    private int book_taken;
 
-    public Book(int book_id, String book_name, String book_author, String book_publication, String book_isbn, boolean book_taken) {
+    public Book(int book_id, String book_name, String book_author, String book_publication, String book_isbn, int book_taken) {
         this.book_id = book_id;
         this.book_name = book_name;
         this.book_author = book_author;
@@ -35,7 +35,7 @@ public class Book {
         return book_isbn;
     }
 
-    public boolean isBook_taken() {
+    public int isBook_taken() {
         return book_taken;
     }
 }
