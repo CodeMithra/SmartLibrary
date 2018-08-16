@@ -5,18 +5,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Student {
-    private int student_id;
+    private String student_id;
     private String student_name;
-    private int student_contact;
+    private long student_contact;
     private String student_email;
     private String student_address;
     private int noofbooks;
 
     public Student() {
         Scanner reader = new Scanner(System.in);
-        this.student_id = reader.nextInt();
+        this.student_id = reader.next();
         this.student_name = reader.next();
-        this.student_contact = reader.nextInt();
+        this.student_contact = reader.nextLong();
         this.student_email = reader.next();
         this.student_address = reader.next();
         this.noofbooks = noofbooks;
@@ -26,7 +26,7 @@ public class Student {
         try {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/karthikgr/IdeaProjects/SmartLibrary/library.db");
             Statement statement = conn.createStatement();
-            statement.execute("CREATE TABLE if not exists Students (student_id INTEGER PRIMARY KEY NOT NULL ,student_name TEXT,student_contact BIGINT, student_email TEXT,student_address LONGVARCHAR,noofbooks INTEGER)");
+            statement.execute("CREATE TABLE if not exists Students (student_id TEXT PRIMARY KEY NOT NULL ,student_name TEXT,student_contact BIGINT, student_email TEXT,student_address LONGVARCHAR,noofbooks INTEGER)");
             statement.execute("INSERT into Students values ('" + student_id + "','" + student_name + "','" + student_contact + "','" + student_email + "','" + student_address + "','" + noofbooks +"')");
             statement.close();
             conn.close();
@@ -37,7 +37,7 @@ public class Student {
     }
 
 
-    public int getStudent_id() {
+    public String getStudent_id() {
         return student_id;
     }
 
@@ -45,7 +45,7 @@ public class Student {
         return student_name;
     }
 
-    public int getStudent_contact() {
+    public Long getStudent_contact() {
         return student_contact;
     }
 

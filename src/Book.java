@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 
 public class Book {
-    private int book_id;
+    private String book_id;
     private String book_name;
     private String book_author;
     private String book_publication;
@@ -17,7 +17,7 @@ public class Book {
     public Book() {
         System.out.println("Please enter the book details:\n");
         Scanner reader = new Scanner(System.in);
-        this.book_id = reader.nextInt();
+        this.book_id = reader.next();
         this.book_name = reader.next();
         this.book_author = reader.next();
         this.book_publication = reader.next();
@@ -30,7 +30,7 @@ public class Book {
         try {
             Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/karthikgr/IdeaProjects/SmartLibrary/library.db");
             Statement statement = conn.createStatement();
-            statement.execute("CREATE TABLE if not exists Books (bookdb_id INTEGER PRIMARY KEY NOT NULL ,bookdb_name TEXT,bookdb_author TEXT, bookdb_publication TEXT,bookdb_isbn TEXT,book_category TEXT,bookdb_taken INTEGER)");
+            statement.execute("CREATE TABLE if not exists Books (bookdb_id TEXT PRIMARY KEY NOT NULL ,bookdb_name TEXT,bookdb_author TEXT, bookdb_publication TEXT,bookdb_isbn TEXT,book_category TEXT,bookdb_taken INTEGER)");
             statement.execute("INSERT into Books values ('" + book_id + "','" + book_name + "','" + book_author + "','" + book_publication + "','" + book_isbn + "','"+ book_category +"','" + book_taken + "')");
             statement.close();
             conn.close();
@@ -40,7 +40,7 @@ public class Book {
         }
     }
 
-    public int getBook_id() {
+    public String getBook_id() {
         return book_id;
     }
 
