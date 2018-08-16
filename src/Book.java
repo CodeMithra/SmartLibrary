@@ -28,7 +28,7 @@ public class Book {
 
     public void insertBookToDB() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/gautam/IdeaProjects/SmartLibrary/library.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/karthikgr/IdeaProjects/SmartLibrary/library.db");
             Statement statement = conn.createStatement();
             statement.execute("CREATE TABLE if not exists Books (bookdb_id TEXT PRIMARY KEY NOT NULL ,bookdb_name TEXT,bookdb_author TEXT, bookdb_publication TEXT,bookdb_isbn TEXT,book_category TEXT,bookdb_taken INTEGER)");
             statement.execute("INSERT into Books values ('" + book_id + "','" + book_name + "','" + book_author + "','" + book_publication + "','" + book_isbn + "','"+ book_category +"','" + book_taken + "')");

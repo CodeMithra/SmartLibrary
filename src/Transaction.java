@@ -21,16 +21,21 @@ public class Transaction {
     }
 
     public void insertTransactionToDB() {
-        String query = "select noofbooks from Student where student_id = '" + T_studentid + "'";
+        String query = "select noofbooks from Students where student_id = '" + T_studentid + "'";
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/gautam/IdeaProjects/SmartLibrary/library.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/karthikgr/IdeaProjects/SmartLibrary/library.db");
             Statement statement = conn.createStatement();
             statement.execute("CREATE TABLE if not exists Transactions (transaction_id INTEGER PRIMARY KEY NOT NULL, T_bookid TEXT,T_studentid TEXT,T_taken_date TEXT, T_ending_date TEXT,FOREIGN KEY(T_bookid) REFERENCES Books(bookdb_id),FOREIGN KEY(T_studentid) REFERENCES Students(student_id))");
             ResultSet result = statement.executeQuery(query);
             int booksTaken = result.getInt("noofbooks");
             System.out.println("No of books = "+ booksTaken);
-            if(booksTaken <=3)
-                statement.execute("INSERT into Transactions values ('" + transaction_id + "','" + T_bookid + "','"+ T_studentid +"','" + T_taken_date + "','" + T_ending_date + "')");
+            if(booksTaken <3) {
+                statement.execute("INSERT into Transactions values ('" + transaction_id + "','" + T_bookid + "','" + T_studentid + "','" + T_taken_date + "','" + T_ending_date + "')");
+                booksTaken++;
+                statement.execute("UPDATE Students SET noofbooks = '"+booksTaken+"' where student_id = '"+T_studentid+"'");
+            }
+            else
+                System.out.println("Books can't be issued! :)");
             statement.close();
             conn.close();
         }
