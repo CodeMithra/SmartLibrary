@@ -24,7 +24,7 @@ public class Student {
 
     public void insertStudentToDB() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/karthikgr/IdeaProjects/SmartLibrary/library.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/gautam/IdeaProjects/SmartLibrary/library.db");
             Statement statement = conn.createStatement();
             statement.execute("CREATE TABLE if not exists Students (student_id TEXT PRIMARY KEY NOT NULL ,student_name TEXT,student_contact BIGINT, student_email TEXT,student_address LONGVARCHAR,noofbooks INTEGER)");
             statement.execute("INSERT into Students values ('" + student_id + "','" + student_name + "','" + student_contact + "','" + student_email + "','" + student_address + "','" + noofbooks +"')");

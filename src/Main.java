@@ -14,6 +14,7 @@ public class Main {
                 Student student = new Student();
                 student.insertStudentToDB();
                 System.out.println("------------------------------");
+
                 Transaction transaction = new Transaction();
                 transaction.insertTransactionToDB();
             }
