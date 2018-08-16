@@ -3,6 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+import java.util.Date;
 
 public class Book {
     private int book_id;
@@ -10,6 +11,7 @@ public class Book {
     private String book_author;
     private String book_publication;
     private String book_isbn;
+    private String book_category;
     private boolean book_taken;
 
     public Book() {
@@ -20,22 +22,25 @@ public class Book {
         this.book_author = reader.next();
         this.book_publication = reader.next();
         this.book_isbn = reader.next();
+        this.book_category = reader.next();
         this.book_taken = reader.nextBoolean();
+
+        Date date = new Date();
+        System.out.println(date.getTimezoneOffset());
     }
 
     public void insertBookToDB() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/gautam/IdeaProjects/SmartLibrary/library.db");
+            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/karthikgr/IdeaProjects/SmartLibrary/library.db");
             Statement statement = conn.createStatement();
-            statement.execute("CREATE TABLE if not exists Book (bookdb_id INTEGER ,bookdb_name TEXT,bookdb_author TEXT, bookdb_publication TEXT,bookdb_isbn TEXT,bookdb_taken INTEGER)");
-            statement.execute("INSERT into Book values ('" + book_id + "','" + book_name + "','" + book_author + "','" + book_publication + "','" + book_isbn + "'," + book_taken + ")");
+            statement.execute("CREATE TABLE if not exists Books (bookdb_id INTEGER PRIMARY KEY NOT NULL ,bookdb_name TEXT,bookdb_author TEXT, bookdb_publication TEXT,bookdb_isbn TEXT,book_category TEXT,bookdb_taken INTEGER)");
+            statement.execute("INSERT into Books values ('" + book_id + "','" + book_name + "','" + book_author + "','" + book_publication + "','" + book_isbn + "','"+ book_category +"','" + book_taken + "')");
             statement.close();
             conn.close();
         }
         catch (SQLException e){
             System.out.println("something went wrong: "+e.getMessage());
         }
-
     }
 
     public int getBook_id() {
