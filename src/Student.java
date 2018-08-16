@@ -10,7 +10,7 @@ public class Student {
     private int student_contact;
     private String student_email;
     private String student_address;
-    private Transaction noofbooks;
+    private int noofbooks;
 
     public Student() {
         Scanner reader = new Scanner(System.in);
@@ -57,7 +57,7 @@ public class Student {
         return student_address;
     }
 
-    public Transaction getNoofbooks() {
+    public int getNoofbooks() {
         return noofbooks;
     }
 }

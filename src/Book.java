@@ -3,7 +3,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
-import java.util.Date;
+
 
 public class Book {
     private int book_id;
@@ -24,9 +24,6 @@ public class Book {
         this.book_isbn = reader.next();
         this.book_category = reader.next();
         this.book_taken = reader.nextBoolean();
-
-        Date date = new Date();
-        System.out.println(date.getTimezoneOffset());
     }
 
     public void insertBookToDB() {
