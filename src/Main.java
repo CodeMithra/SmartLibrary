@@ -3,39 +3,53 @@ import static java.lang.System.exit;
 public class Main implements Globalvariables {
     public static void main(String args[]){
         while(true){
-            System.out.println("1: Add Book to database\n2: Add Student to database\n3: Add Transaction details\n4: Select this option to exit" );
+            System.out.println("1: Add Book to database\n2: Add Student to database\n3: Add Transaction details\n"+
+                    "4: Remove Book from database\n5: Remove Student from database\n6: Remove Transaction from database\n" +
+                    "7: Edit the book information\n8: Edit the student information\n9: Select this option to exit" );
             System.out.println("Enter your choice:");
             String choice = reader.next();
             switch (choice){
                 case "1":System.out.println("Enter the Book details!");
-                         addBook();
+                         Book newBook = new Book();
+                         newBook.insertBookToDB();
                          break;
 
                 case "2":System.out.println("Enter the Student details!");
-                         addStudent();
+                         Student student = new Student();
+                         student.insertStudentToDB();
                          break;
 
                 case "3":System.out.println("Enter the Transaction details!");
-                         addTransaction();
+                         Transaction transaction = new Transaction();
+                         transaction.insertTransactionToDB();
                          break;
 
-                case "4":exit(0);
+                case "4":System.out.println("Enter the book id to delete from database!");exit(0);
+                         break;
+
+                case "5":System.out.println("Enter the student id to delete from database!");
+                         String studentId= reader.next();
+                         student = new Student(studentId);
+                         student.removeStudentFromDB();
+                         break;
+
+                case "6":System.out.println("Enter the Transaction id to delete from database!");
+                         break;
+
+                case "7":break;
+
+                case "8":System.out.println("Enter the student id to edit in database!");
+                         studentId = reader.next();
+                         student = new Student(studentId);
+                         student.editStudentInfo();
+                         break;
+
+                case "9": exit(0);
+
                          default:
                              System.out.println("You have Entered a wrong choice! Re-enter the choice again!!");
                              break;
             }
         }
-    }
-    private static void addStudent(){
-        Student student = new Student();
-        student.insertStudentToDB();
-    }
-    private static void addBook(){
-        Book newBook = new Book();
-        newBook.insertBookToDB();
-    }
-    private static void addTransaction(){
-        Transaction transaction = new Transaction();
-        transaction.insertTransactionToDB();
     }
 }
