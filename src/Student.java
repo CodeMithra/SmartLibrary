@@ -1,33 +1,36 @@
-import java.util.Scanner;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class Student {
-    private String student_id;
-    private String student_name;
-    private long student_contact;
-    private String student_email;
-    private String student_address;
-    private int noofbooks;
+public class Student implements Globalvariables{
+    private String studentId;
+    private String studentName;
+    private long studentContact;
+    private String studentEmail;
+    private String studentAddress;
+    private int noOfBooks;
 
     public Student() {
-        Scanner reader = new Scanner(System.in);
-        this.student_id = reader.next();
-        this.student_name = reader.next();
-        this.student_contact = reader.nextLong();
-        this.student_email = reader.next();
-        this.student_address = reader.next();
-        this.noofbooks = noofbooks;
-    }
 
+        System.out.println("Enter student id:");
+        this.studentId = reader.next();
+        System.out.println("Enter student name:");
+        this.studentName = reader.next();
+        System.out.println("Enter student contact:");
+        this.studentContact = reader.nextLong();
+        System.out.println("Enter student email:");
+        this.studentEmail = reader.next();
+        System.out.println("Enter student address:");
+        this.studentAddress = reader.next();
+        this.noOfBooks = noOfBooks;
+    }
     public void insertStudentToDB() {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:sqlite:/home/karthikgr/IdeaProjects/SmartLibrary/library.db");
+            Connection conn = DriverManager.getConnection(path);
             Statement statement = conn.createStatement();
-            statement.execute("CREATE TABLE if not exists Students (student_id TEXT PRIMARY KEY NOT NULL ,student_name TEXT,student_contact BIGINT, student_email TEXT,student_address LONGVARCHAR,noofbooks INTEGER)");
-            statement.execute("INSERT into Students values ('" + student_id + "','" + student_name + "','" + student_contact + "','" + student_email + "','" + student_address + "','" + noofbooks +"')");
+            statement.execute("CREATE TABLE if not exists Students (student_id TEXT PRIMARY KEY NOT NULL ,student_name TEXT ,student_contact BIGINT, student_email TEXT ,student_address LONGVARCHAR,noofbooks INTEGER)");
+            statement.execute("INSERT into Students values ('" + studentId + "','" + studentName + "','" + studentContact + "','" + studentEmail + "','" + studentAddress + "','" + noOfBooks +"')");
             statement.close();
             conn.close();
         }
@@ -38,26 +41,26 @@ public class Student {
 
 
     public String getStudent_id() {
-        return student_id;
+        return studentId;
     }
 
     public String getStudent_name() {
-        return student_name;
+        return studentName;
     }
 
     public Long getStudent_contact() {
-        return student_contact;
+        return studentContact;
     }
 
     public String getStudent_email() {
-        return student_email;
+        return studentEmail;
     }
 
     public String getStudent_address() {
-        return student_address;
+        return studentAddress;
     }
 
     public int getNoofbooks() {
-        return noofbooks;
+        return noOfBooks;
     }
 }
