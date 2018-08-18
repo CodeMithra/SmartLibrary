@@ -66,29 +66,29 @@ public class Book implements Globalvariables{
             String choice = reader.next();
             switch (choice) {
                 case "1":System.out.println("Enter the book name to be changed:");
-                    String bookName = reader.next();
-                    statement.execute("UPDATE Books SET bookdb_name = '"+bookName+"' where bookdb_id = '"+getBookId()+"'");
-                    break;
+                         String bookName = reader.next();
+                         statement.execute("UPDATE Books SET bookdb_name = '"+bookName+"' where bookdb_id = '"+getBookId()+"'");
+                         break;
 
                 case "2":System.out.println("Enter the author name to be changed:");
-                    String bookAuthor = reader.next();
-                    statement.execute("UPDATE Books SET bookdb_author = '"+bookAuthor+"' where bookdb_id = '"+getBookId()+"'");
-                    break;
+                         String bookAuthor = reader.next();
+                         statement.execute("UPDATE Books SET bookdb_author = '"+bookAuthor+"' where bookdb_id = '"+getBookId()+"'");
+                         break;
 
                 case "3":System.out.println("Enter the publication name to be changed:");
-                    String bookPublication = reader.next();
-                    statement.execute("UPDATE Books SET bookdb_publication = '"+bookPublication+"' where bookdb_id = '"+getBookId()+"'");
-                    break;
+                         String bookPublication = reader.next();
+                         statement.execute("UPDATE Books SET bookdb_publication = '"+bookPublication+"' where bookdb_id = '"+getBookId()+"'");
+                         break;
 
                 case "4":System.out.println("Enter the ISBN to be changed:");
-                    String bookIsbn = reader.next();
-                    statement.execute("UPDATE Books SET bookdb_isbn = '"+bookIsbn+"' where bookdb_id = '"+getBookId()+"'");
-                    break;
+                         String bookIsbn = reader.next();
+                         statement.execute("UPDATE Books SET bookdb_isbn = '"+bookIsbn+"' where bookdb_id = '"+getBookId()+"'");
+                         break;
 
                 case "5":System.out.println("Enter the book category to be changed:");
-                    String bookCategory = reader.next();
-                    statement.execute("UPDATE Books SET bookdb_category = '"+bookCategory+"' where bookdb_id = '"+getBookId()+"'");
-                    break;
+                         String bookCategory = reader.next();
+                         statement.execute("UPDATE Books SET bookdb_category = '"+bookCategory+"' where bookdb_id = '"+getBookId()+"'");
+                         break;
             }
             statement.close();
             conn.close();
