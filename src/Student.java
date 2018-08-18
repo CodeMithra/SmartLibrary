@@ -47,7 +47,7 @@ public class Student implements Globalvariables{
         try {
             Connection conn = DriverManager.getConnection(path);
             Statement statement = conn.createStatement();
-            statement.execute("DELETE FROM Students WHERE student_id = '"+getStudent_id()+"'");
+            statement.execute("DELETE FROM Students WHERE student_id = '"+getStudentId()+"'");
             System.out.println("Deletion successful");
             statement.close();
             conn.close();
@@ -66,22 +66,22 @@ public class Student implements Globalvariables{
             switch (choice) {
                     case "1":System.out.println("Enter the student name to be changed:");
                              String studentName = reader.next();
-                             statement.execute("UPDATE Students SET student_name = '"+studentName+"' where student_id = '"+getStudent_id()+"'");
+                             statement.execute("UPDATE Students SET student_name = '"+studentName+"' where student_id = '"+getStudentId()+"'");
                              break;
 
                     case "2":System.out.println("Enter the student Contact to be changed:");
                              Long studentContact = reader.nextLong();
-                             statement.execute("UPDATE Students SET student_contact = '"+studentContact+"' where student_id = '"+getStudent_id()+"'");
+                             statement.execute("UPDATE Students SET student_contact = '"+studentContact+"' where student_id = '"+getStudentId()+"'");
                              break;
 
                     case "3":System.out.println("Enter the student Email to be changed:");
                              String studentEmail = reader.next();
-                             statement.execute("UPDATE Students SET student_email = '"+studentEmail+"' where student_id = '"+getStudent_id()+"'");
+                             statement.execute("UPDATE Students SET student_email = '"+studentEmail+"' where student_id = '"+getStudentId()+"'");
                              break;
 
                     case "4":System.out.println("Enter the student Address to be changed:");
                              String studentAddress = reader.next();
-                             statement.execute("UPDATE Students SET student_address = '"+studentAddress+"' where student_id = '"+getStudent_id()+"'");
+                             statement.execute("UPDATE Students SET student_address = '"+studentAddress+"' where student_id = '"+getStudentId()+"'");
                              break;
             }
             statement.close();
@@ -90,27 +90,27 @@ public class Student implements Globalvariables{
             System.out.println("something went wrong: "+e.getMessage());
         }
     }
-    public String getStudent_id() {
+    public String getStudentId() {
         return studentId;
     }
 
-    public String getStudent_name() {
+    public String getStudentName() {
         return studentName;
     }
 
-    public Long getStudent_contact() {
+    public Long getStudentContact() {
         return studentContact;
     }
 
-    public String getStudent_email() {
+    public String getStudentEmail() {
         return studentEmail;
     }
 
-    public String getStudent_address() {
+    public String getStudentAddress() {
         return studentAddress;
     }
 
-    public int getNoofbooks() {
+    public int getNoOfBooks() {
         return noOfBooks;
     }
 }

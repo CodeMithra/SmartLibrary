@@ -21,7 +21,9 @@ public class Transaction implements Globalvariables{
         System.out.println("Enter the Student id: ");
         this.tStudentId = reader.next();
     }
-
+    public Transaction(int transactionId){
+        this.transactionId = transactionId;
+    }
     public void insertTransactionToDB() {
         String query = "select noofbooks from Students where student_id = '" + tStudentId + "'";
         try {
@@ -45,22 +47,32 @@ public class Transaction implements Globalvariables{
             System.out.println("something went wrong: "+e.getMessage());
         }
     }
-    public int getTransaction_id() {
+    public void removeTransactionFromDB(){
+        try {
+            Connection conn = DriverManager.getConnection(path);
+            Statement statement = conn.createStatement();
+            statement.execute("DELETE FROM Transactions WHERE transaction_id = '"+gettransactionId()+"'");
+            System.out.println("Deletion successful");
+            statement.close();
+            conn.close();
+        }catch (SQLException e){
+            System.out.println("something went wrong: "+e.getMessage());
+        }
+    }
+    public int gettransactionId() {
         return transactionId;
     }
-    public String getT_bookid() {
-        return tBookId;
-    }
+    public String gettBookId() { return tBookId; }
 
-    public String getT_studentid() {
+    public String gettStudentId() {
         return tStudentId;
     }
 
-    public String getT_taken_date() {
+    public String gettTakenDate() {
         return tTakenDate;
     }
-    public String getT_ending_date() {
+    public String gettEndingDate() {
         return tEndingDate;
     }
-    public int getTransaction_count(){ return transactionCount++;}
+    public int gettransactionCount(){ return transactionCount++;}
 }

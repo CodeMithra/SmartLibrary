@@ -24,7 +24,10 @@ public class Main implements Globalvariables {
                          transaction.insertTransactionToDB();
                          break;
 
-                case "4":System.out.println("Enter the book id to delete from database!");exit(0);
+                case "4":System.out.println("Enter the book id to delete from database!");
+                         String bookId = reader.next();
+                         newBook = new Book(bookId);
+                         newBook.removeBookFromDB();
                          break;
 
                 case "5":System.out.println("Enter the student id to delete from database!");
@@ -34,9 +37,16 @@ public class Main implements Globalvariables {
                          break;
 
                 case "6":System.out.println("Enter the Transaction id to delete from database!");
+                         int transactionId= reader.nextInt();
+                         transaction = new Transaction(transactionId);
+                         transaction.removeTransactionFromDB();
                          break;
 
-                case "7":break;
+                case "7":System.out.println("Enter the book id to edit in database!");
+                         bookId = reader.next();
+                         newBook = new Book(bookId);
+                         newBook.editBookInfo();
+                         break;
 
                 case "8":System.out.println("Enter the student id to edit in database!");
                          studentId = reader.next();
